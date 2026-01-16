@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A-Mudar Conversational Form</title>
+
+    <link rel="stylesheet" href="form_style.css">
+</head>
+
+<body>
+
+    <div id="amudar-form" class="cf-wrapper">
+
+        <!-- FRAME 1 -->
+        <div class="cf-step active" id="step-1">
+            <h2 class="cf-title">¿Qué servicio deseas cotizar?</h2>
+
+            <div class="cf-options">
+                <button class="cf-btn" data-next="step-mudanza">🚚 Mudanzas</button>
+                <button class="cf-btn" data-next="step-bodega">📦 Bodegaje</button>
+            </div>
+        </div>
+
+        <!-- FRAME 2 -->
+        <div class="cf-step" id="step-mudanza">
+            <h2 class="cf-title">Punto de partida</h2>
+            <p class="cf-subtitle">Ingresa la dirección donde inicia tu mudanza.</p>
+
+            <input id="origen-input" type="text" class="cf-input" placeholder="Dirección de origen…">
+
+            <div class="cf-nav">
+                <button class="cf-back" data-back="step-1">← Volver</button>
+                <button class="cf-next disabled" data-next="step-fecha" id="origen-next">Continuar →</button>
+            </div>
+        </div>
+
+        <!-- FRAME 3 -->
+        <div class="cf-step" id="step-fecha">
+            <h2 class="cf-title">¿Cuándo deseas realizar tu mudanza?</h2>
+
+            <input type="date" id="fecha-input" class="cf-input">
+
+            <div class="cf-nav">
+                <button class="cf-back" data-back="step-mudanza">← Volver</button>
+                <button class="cf-next disabled" data-next="step-estacion-origen" id="fecha-next">Continuar →</button>
+            </div>
+        </div>
+
+        <!-- FRAME 4 -->
+        <div class="cf-step" id="step-estacion-origen">
+            <h2 class="cf-title">Sobre el acceso en la dirección de origen</h2>
+
+            <div class="cf-radios">
+                <label><input type="radio" name="est-origen" value="cerca"> Sí, a menos de 40 metros</label>
+                <label><input type="radio" name="est-origen" value="lejos"> No, está a más de 40 metros</label>
+                <label><input type="radio" name="est-origen" value="sub"> La entrada es por subterráneo</label>
+            </div>
+
+            <div class="cf-nav">
+                <button class="cf-back" data-back="step-fecha">← Volver</button>
+                <button class="cf-next disabled" data-next="step-estacion-destino" id="estacion-origen-next">Continuar
+                    →</button>
+            </div>
+        </div>
+
+        <!-- FRAME 5 -->
+        <div class="cf-step" id="step-estacion-destino">
+            <h2 class="cf-title">Acceso en la dirección de destino</h2>
+
+            <div class="cf-radios">
+                <label><input type="radio" name="est-destino" value="cerca"> Sí, a menos de 40 metros</label>
+                <label><input type="radio" name="est-destino" value="lejos"> No, está a más de 40 metros</label>
+                <label><input type="radio" name="est-destino" value="sub"> La entrada es por subterráneo</label>
+            </div>
+
+            <div class="cf-nav">
+                <button class="cf-back" data-back="step-estacion-origen">← Volver</button>
+
+                <!-- 👇 AQUÍ ESTABA EL ERROR 👇 -->
+                <button class="cf-next disabled" data-next="step-items" id="estacion-destino-next">Continuar →</button>
+            </div>
+        </div>
+
+        <!-- FRAME 6 — ÍTEMS -->
+        <div class="cf-step" id="step-items">
+
+            <h2 class="cf-title">Ahora agrega los ítems que deseas transportar</h2>
+
+            <div class="totals-box">
+                Volumen total: <span id="total-vol">0</span> m³ <br>
+                Ítems totales: <span id="total-items">0</span>
+            </div>
+
+            <br>
+            <!-- ======================== -->
+            <!--       CATEGORÍA HOGAR     -->
+            <!-- ======================== -->
+            <div class="cat-box">
+                <div class="cat-header">🏠 Hogar</div>
+                <div class="cat-items">
+
+                    <div class="item-row" data-volume="0.8">
+                        <div class="item-info">
+                            Sofá 2 puestos
+                            <span class="tooltip" data-tip="Sofá de tamaño estándar para 2 personas.">i</span>
+                        </div>
+                        <div class="qty-box">
+                            <button class="qty-btn minus">−</button>
+                            <span class="qty">0</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+
+                    <div class="item-row" data-volume="1.2">
+                        <div class="item-info">
+                            Cama doble
+                            <span class="tooltip" data-tip="Incluye base y colchón.">i</span>
+                        </div>
+                        <div class="qty-box">
+                            <button class="qty-btn minus">−</button>
+                            <span class="qty">0</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+
+                    <div class="item-row" data-volume="0.4">
+                        <div class="item-info">
+                            Mesa de noche
+                            <span class="tooltip" data-tip="Mesa auxiliar pequeña estándar.">i</span>
+                        </div>
+                        <div class="qty-box">
+                            <button class="qty-btn minus">−</button>
+                            <span class="qty">0</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ======================== -->
+            <!--      CATEGORÍA OFICINA   -->
+            <!-- ======================== -->
+            <div class="cat-box">
+                <div class="cat-header">💼 Oficina</div>
+                <div class="cat-items">
+
+                    <div class="item-row" data-volume="0.3">
+                        <div class="item-info">
+                            Silla ergonómica
+                            <span class="tooltip" data-tip="Silla de oficina con soporte lumbar.">i</span>
+                        </div>
+                        <div class="qty-box">
+                            <button class="qty-btn minus">−</button>
+                            <span class="qty">0</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+
+                    <div class="item-row" data-volume="0.7">
+                        <div class="item-info">
+                            Escritorio mediano
+                            <span class="tooltip" data-tip="Escritorio de tamaño promedio de oficina.">i</span>
+                        </div>
+                        <div class="qty-box">
+                            <button class="qty-btn minus">−</button>
+                            <span class="qty">0</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+
+                    <div class="item-row" data-volume="0.2">
+                        <div class="item-info">
+                            Archivador
+                            <span class="tooltip" data-tip="Archivador metálico de 2–3 gavetas.">i</span>
+                        </div>
+                        <div class="qty-box">
+                            <button class="qty-btn minus">−</button>
+                            <span class="qty">0</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ======================== -->
+            <!--     CATEGORÍA BODEGA     -->
+            <!-- ======================== -->
+            <div class="cat-box">
+                <div class="cat-header">📦 Bodega</div>
+                <div class="cat-items">
+
+                    <div class="item-row" data-volume="0.15">
+                        <div class="item-info">
+                            Caja mediana
+                            <span class="tooltip" data-tip="Caja estándar de 40x40 cm.">i</span>
+                        </div>
+                        <div class="qty-box">
+                            <button class="qty-btn minus">−</button>
+                            <span class="qty">0</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+
+                    <div class="item-row" data-volume="0.25">
+                        <div class="item-info">
+                            Caja grande
+                            <span class="tooltip" data-tip="Caja de gran capacidad 60x50 cm.">i</span>
+                        </div>
+                        <div class="qty-box">
+                            <button class="qty-btn minus">−</button>
+                            <span class="qty">0</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+
+                    <div class="item-row" data-volume="0.5">
+                        <div class="item-info">
+                            Estantería pequeña
+                            <span class="tooltip" data-tip="Repisa o estante de menos de 1.5m.">i</span>
+                        </div>
+                        <div class="qty-box">
+                            <button class="qty-btn minus">−</button>
+                            <span class="qty">0</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <br>
+
+            <div class="cf-nav">
+                <button class="cf-back" data-back="step-estacion-destino">← Volver</button>
+                <button class="cf-next disabled" id="items-next" data-next="step-contacto">Continuar →</button>
+            </div>
+
+        </div>
+
+        <!-- FRAME 7 — CONTACTO -->
+        <div class="cf-step" id="step-contacto">
+            <h2 class="cf-title">Datos de contacto</h2>
+
+            <input type="email" id="email-input" class="cf-input" placeholder="Correo electrónico">
+            <input type="tel" id="phone-input" class="cf-input" placeholder="Teléfono (+57…)">
+
+            <label class="cf-checkbox">
+                <input type="checkbox" id="acepto-check"> Acepto los términos.
+            </label>
+
+            <div class="cf-nav">
+                <button class="cf-back" data-back="step-items">← Volver</button>
+                <button class="cf-next disabled" id="final-next">Enviar</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="form_js.js"></script>
+
+</body>
+
+</html>

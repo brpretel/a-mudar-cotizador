@@ -1,0 +1,235 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background: #f7f8fa;
+}
+
+.cf-wrapper {
+    width: 100%;
+    max-width: 500px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: all .3s ease;
+}
+
+.cf-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #071a36;
+    margin-bottom: 10px;
+}
+
+.cf-subtitle {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.cf-step {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all .35s ease;
+}
+
+.cf-step.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cf-btn {
+    width: 100%;
+    background: #071a36;
+    padding: 14px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    transition: .25s;
+}
+
+.cf-btn:hover {
+    background: #0a244a;
+}
+
+.cf-input {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.cf-radios label {
+    display: block;
+    background: #f1f3f6;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.cf-radios input {
+    margin-right: 10px;
+}
+
+.cf-radios label:hover {
+    background: #e6e9ef;
+}
+
+.cf-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.cf-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.cf-back {
+    background: #ddd;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.cf-next {
+    background: #071a36;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.cf-next.disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+
+
+
+
+/*==========================
+Acordeones / categorías
+==========================*/
+
+.cat-box {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.cat-header {
+    padding: 12px;
+    cursor: pointer;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.cat-header:hover {
+    background: #eaeaea;
+}
+
+.cat-items {
+    display: none;
+    padding: 12px;
+    border-top: 1px solid #ddd;
+}
+
+.cat-items.active {
+    display: block;
+}
+
+/*==========================
+Items
+==========================*/
+
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.item-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tooltip {
+    position: relative;
+    cursor: help;
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.tooltip:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    top: -5px;
+    left: 20px;
+    width: 180px;
+    padding: 8px;
+    background: #333;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 12px;
+    z-index: 50;
+}
+
+/*==========================
+Qty buttons
+==========================*/
+
+.qty-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qty-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+    border: none;
+    background: #071a36;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 25px;
+}
+
+.qty-btn:hover {
+    background: #0a244a;
+}
+
+.totals-box {
+    background: #eef3ff;
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 18px;
+    font-size: 16px;
+    font-weight: bold;
+}
